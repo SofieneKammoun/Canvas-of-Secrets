@@ -31,8 +31,8 @@ for i in range(NUM_IMAGES):
     noise_texture_image = pygame.image.load(os.path.join(noise_texture_dir, noise_texture_file))
 
     # Random position
-    x = random.randint(-100,150)
-    y = random.randint(-200 ,100)
+    x = random.randint(0,800)
+    y = random.randint(0 ,300)
     angle = random.uniform(-20, 20)
     # Random size
     scale_factor = random.uniform(0.5, 0.8)

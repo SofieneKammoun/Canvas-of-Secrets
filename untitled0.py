@@ -12,7 +12,7 @@ pygame.init()
 # Constants
 WIDTH, HEIGHT = 1920, 1080
 NUM_PARTICLES = 4000
-MICROPHONE_THRESHOLD = 0.5# Adjust as needed
+MICROPHONE_THRESHOLD = 1# Adjust as needed
 
 # Create a Pygame screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -46,7 +46,7 @@ def audio_callback(indata, frames, time, status):
         print(status, flush=True)
     mic_data.extend(indata[:, 0])  # Extract the left channel data
 
-sd.InputStream(callback=audio_callback, channels=2, dtype=np.float32, samplerate=8000).start()
+sd.InputStream(callback=audio_callback, channels=2, dtype=np.float32, samplerate=4000).start()
 
 running = True
 while running:
@@ -58,7 +58,7 @@ while running:
              angle = random.uniform(-50, 50)
              key = event.unicode
              font = pygame.font.Font(None, random.randint(20, 180))
-             text = font.render(key.lower() ,True, (0, 0, 0),(60,100, 60))
+             text = font.render(key.lower() ,True, (0, 0, 0),(250,250, 250))
              rotated_text = pygame.transform.rotate(text, angle)
 
              # Get a random position within the screen boundaries
@@ -76,7 +76,7 @@ while running:
     gcolor = random.randint(5, 20)
     bcolor = random.randint(6, 20)
     background_color = (rcolor, gcolor, bcolor)
-    alpha_value = 50
+    alpha_value = 10
     # Set the alpha value (transparency)
     # Create a new surface with the desired background color and alpha
     background_surface = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
@@ -118,9 +118,9 @@ while running:
             # Sample the grayscale value from the image at the normalized positions
             gray_value = images[i].get_at((int(normalized_x * image.get_width()), int(normalized_y * image.get_height()))).r / 255.0
             #gray_value = image.get_at((int(normalized_x * image.get_width()), int(normalized_y * image.get_height()))).r / 255.0
-            a =  7* math.pi * gray_value
-            x += 3* math.cos(a)
-            y += 3* math.sin(a)
+            a =  12* math.pi * gray_value
+            x += 1* math.cos(a)
+            y += 1* math.sin(a)
             particles[p]= (x,y)
             pygame.draw.circle(screen, color, (int(x), int(y)), 1.2)
      else :
