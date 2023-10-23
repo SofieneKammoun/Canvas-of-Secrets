@@ -6,7 +6,7 @@ RUN pip install -r requirements.txt
 
 ADD notePicGenreation.py .
 ADD MainNote.py .
-ADD test_required_files .
+ADD test_required_files.py .
 COPY ./wav ./wav
 COPY ./notes ./notes
 
