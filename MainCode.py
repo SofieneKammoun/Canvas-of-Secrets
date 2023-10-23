@@ -4,7 +4,7 @@ import random
 import math
 import sounddevice as sd
 import numpy as np
-from perlin_noise import PerlinNoise
+
 
 # Initialize Pygame
 pygame.init()
